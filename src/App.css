@@ -3,39 +3,69 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 @font-face {
-  font-family: "Open-Sans";
-  src: url("./assets/fonts/OpenSans-Regular.ttf") format("truetype");
+  font-family: "Open Sans";
+  src: url("./assets/fonts/OpenSans-Regular.ttf");
 }
-body {
-  font-family: "Open-Sans";
-}
-.todoInputContainer {
+
+.todoInput {
   width: 80%;
-  border: 2px solid red;
-  margin: auto;
+  margin: 20px auto;
+  padding: 15px;
 }
-.todoInputContainer__title {
-  font-size: 16px;
+
+.todoInput__title {
   text-align: center;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-family: "Open Sans";
 }
-.todoInputContainer__inputSection {
+
+.todoInput__inputSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.todoInput__iconBox {
+  background-color: rgb(22, 163, 183);
+  width: 38px;
+  height: 34px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  border-radius: 4px 0 0 4px;
 }
 
-input.todoInputContainer__inputBox {
-  width: 90%;
-  height: 31px;
+.todoInput__icon {
+  width: 20px;
 }
-.todoInputContainer__inputSection img {
-  width: 31px;
-  height: 24px;
-  margin: 4px 2px;
+.todoInput__inputMainBox {
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  padding: 20px;
 }
-span {
-  height: 31px;
-  background-color: rgb(22 163 183);
-  width: 35px;
+.todoInput__inputBox {
+  flex: 1;
+  height: 34px;
+  padding-left: 10px;
+  border: 1px solid #d4d4d4;
+  border-radius: 0 4px 4px 0;
+  font-size: 15px;
+}
+
+.todoInput__btn {
+  width: 100%;
+  height: 38px;
+  background-color: rgb(22, 163, 183);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.todoInput__btn:hover {
+  opacity: 0.9;
 }
