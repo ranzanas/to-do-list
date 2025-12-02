@@ -4,7 +4,7 @@ import TodoInput from "./components/TodoInput";
 function App() {
   return (
     <>
-      <TodoInput/>
+      <TodoInput />
     </>
   );
 }
