@@ -9,14 +9,15 @@
 }
 
 .todoInput {
-  width: 80%;
+  width: 50%;
   margin: 20px auto;
   padding: 15px;
 }
 
-.todoInput__title {
+.todoInput__title,
+.todoList__title {
   text-align: center;
-  font-size: 18px;
+  font-size: 22px;
   margin-bottom: 15px;
   font-weight: 600;
   font-family: "Open Sans";
@@ -66,6 +67,109 @@
   cursor: pointer;
 }
 
-.todoInput__btn:hover {
-  opacity: 0.9;
+.todoList {
+  width: 50%;
+  margin: 30px auto;
+}
+
+/* Filters */
+.todoList__filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.todoList__filterBtn {
+  padding: 10px 40px;
+  background-color: rgb(22, 163, 183);
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 30%;
+}
+
+/* List items */
+.todoList__items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.todoList__item {
+  background-color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+}
+
+/* Text styling */
+.todoList__text {
+  flex: 1;
+  font-size: 16px;
+}
+
+.todoList__text--done {
+  text-decoration: line-through;
+  color: #d9534f;
+}
+
+/* Checkbox */
+.todoList__checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: #439951;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+/* Edit/Delete icons area */
+.todoList__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todoList__iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.todoList__iconBtn img {
+  width: 18px;
+}
+
+/* Delete button */
+.todoList__deleteBtn {
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.todoList__deleteBtn img {
+  width: 18px;
+}
+
+/* Bottom buttons */
+.todoList__bottomBtns {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.todoList__clearDone,
+.todoList__clearAll {
+  background-color: #da3544;
+  padding: 12px 40px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 50%;
 }
