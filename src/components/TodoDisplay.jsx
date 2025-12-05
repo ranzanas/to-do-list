@@ -8,6 +8,7 @@ export default function TodoDisplay({
   toggleDone,
   deleteDoneTasks,
   deleteAllTasks,
+  deleteTodo,
 }) {
   const [filter, setFilter] = useState("all");
 
@@ -72,7 +73,10 @@ export default function TodoDisplay({
                 <img src={penSolid} alt="edit" />
               </button>
 
-              <button className="todoList__deleteBtn">
+              <button
+                className="todoList__deleteBtn"
+                onClick={() => deleteTodo(todo.id)}
+              >
                 <img src={trashSolid} alt="delete" />
               </button>
             </div>

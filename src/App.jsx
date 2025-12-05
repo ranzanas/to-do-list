@@ -50,6 +50,10 @@ function App() {
 
     setTodos([]);
   };
+  const deleteTodo = (id) => {
+    const confirmed = window.confirm("Delete this task?");
+    confirmed ? setTodos(todos.filter((todo) => todo.id !== id)) : null;
+  };
 
   return (
     <>
@@ -59,6 +63,7 @@ function App() {
         toggleDone={toggleDone}
         deleteDoneTasks={deleteDoneTasks}
         deleteAllTasks={deleteAllTasks}
+        deleteTodo={deleteTodo}
       />
     </>
   );
