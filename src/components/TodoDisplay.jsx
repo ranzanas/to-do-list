@@ -2,7 +2,7 @@ import "../App.css";
 import penSolid from "../assets/penSolid.svg";
 import trashSolid from "../assets/trashSolid.svg";
 
-export default function TodoDisplay({ todos }) {
+export default function TodoDisplay({ todos, toggleDone }) {
   return (
     <div className="todoList">
       <h1 className="todoList__title">TodoList</h1>
@@ -16,10 +16,23 @@ export default function TodoDisplay({ todos }) {
       <div className="todoList__items">
         {todos.map((todo) => (
           <div key={todo.id} className="todoList__item">
-            <p className="todoList__text">{todo.text}</p>
+            <p
+              className={
+                todo.done
+                  ? "todoList__text todoList__text--done"
+                  : "todoList__text"
+              }
+            >
+              {todo.text}
+            </p>
 
             <div className="todoList__actions">
-              <input type="checkbox" className="todoList__checkbox" />
+              <input
+                type="checkbox"
+                className="todoList__checkbox"
+                checked={todo.done}
+                onChange={() => toggleDone(todo.id)}
+              />
 
               <button className="todoList__iconBtn">
                 <img src={penSolid} alt="edit" />
