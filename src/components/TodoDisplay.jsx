@@ -1,20 +1,49 @@
 import "../App.css";
+import { useState } from "react";
 import penSolid from "../assets/penSolid.svg";
 import trashSolid from "../assets/trashSolid.svg";
 
 export default function TodoDisplay({ todos, toggleDone }) {
+  const [filter, setFilter] = useState("all");
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "done") {
+      return todo.done;
+    } else if (filter === "todo") {
+      return !todo.done;
+    }
+    return true;
+  });
+
   return (
     <div className="todoList">
       <h1 className="todoList__title">TodoList</h1>
 
       <div className="todoList__filters">
-        <button className="todoList__filterBtn">All</button>
-        <button className="todoList__filterBtn">Done</button>
-        <button className="todoList__filterBtn">Todo</button>
+        <button
+          className="todoList__filterBtn"
+          onClick={() => setFilter("all")}
+        >
+          All
+        </button>
+
+        <button
+          className="todoList__filterBtn"
+          onClick={() => setFilter("done")}
+        >
+          Done
+        </button>
+
+        <button
+          className="todoList__filterBtn"
+          onClick={() => setFilter("todo")}
+        >
+          Todo
+        </button>
       </div>
 
       <div className="todoList__items">
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <div key={todo.id} className="todoList__item">
             <p
               className={
