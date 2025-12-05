@@ -3,7 +3,12 @@ import { useState } from "react";
 import penSolid from "../assets/penSolid.svg";
 import trashSolid from "../assets/trashSolid.svg";
 
-export default function TodoDisplay({ todos, toggleDone }) {
+export default function TodoDisplay({
+  todos,
+  toggleDone,
+  deleteDoneTasks,
+  deleteAllTasks,
+}) {
   const [filter, setFilter] = useState("all");
 
   const filteredTodos = todos.filter((todo) => {
@@ -76,8 +81,12 @@ export default function TodoDisplay({ todos, toggleDone }) {
       </div>
 
       <div className="todoList__bottomBtns">
-        <button className="todoList__clearDone">Delete done tasks</button>
-        <button className="todoList__clearAll">Delete all tasks</button>
+        <button className="todoList__clearDone" onClick={deleteDoneTasks}>
+          Delete done tasks
+        </button>
+        <button className="todoList__clearAll " onClick={deleteAllTasks}>
+          Delete all tasks
+        </button>
       </div>
     </div>
   );

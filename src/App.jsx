@@ -36,10 +36,30 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  const deleteDoneTasks = () => {
+    const confirmDelete = window.confirm("Delete all completed tasks?");
+    if (!confirmDelete) return;
+
+    const remaining = todos.filter((todo) => !todo.done);
+    setTodos(remaining);
+  };
+
+  const deleteAllTasks = () => {
+    const confirmDelete = window.confirm("Delete ALL tasks?");
+    if (!confirmDelete) return;
+
+    setTodos([]);
+  };
+
   return (
     <>
       <TodoInput addTodo={addTodo} />
-      <TodoDisplay todos={todos} toggleDone={toggleDone} />
+      <TodoDisplay
+        todos={todos}
+        toggleDone={toggleDone}
+        deleteDoneTasks={deleteDoneTasks}
+        deleteAllTasks={deleteAllTasks}
+      />
     </>
   );
 }
