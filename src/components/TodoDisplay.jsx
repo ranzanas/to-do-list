@@ -9,17 +9,30 @@ export default function TodoDisplay({
   deleteDoneTasks,
   deleteAllTasks,
   deleteTodo,
+  editTodo,
 }) {
   const [filter, setFilter] = useState("all");
 
+  const [editingId, setEditingId] = useState(null);
+  const [editText, setEditText] = useState("");
+
   const filteredTodos = todos.filter((todo) => {
-    if (filter === "done") {
-      return todo.done;
-    } else if (filter === "todo") {
-      return !todo.done;
-    }
+    if (filter === "done") return todo.done;
+    if (filter === "todo") return !todo.done;
     return true;
   });
+
+  const startEditing = (todo) => {
+    if (todo.done) return;
+    setEditingId(todo.id);
+    setEditText(todo.text);
+  };
+
+  const finishEditing = (id) => {
+    if (editText.trim() === "") return;
+    editTodo(id, editText.trim());
+    setEditingId(null);
+  };
 
   return (
     <div className="todoList">
@@ -27,22 +40,20 @@ export default function TodoDisplay({
 
       <div className="todoList__filters">
         <button
-          className="todoList__filterBtn"
           onClick={() => setFilter("all")}
+          className="todoList__filterBtn"
         >
           All
         </button>
-
         <button
-          className="todoList__filterBtn"
           onClick={() => setFilter("done")}
+          className="todoList__filterBtn"
         >
           Done
         </button>
-
         <button
-          className="todoList__filterBtn"
           onClick={() => setFilter("todo")}
+          className="todoList__filterBtn"
         >
           Todo
         </button>
@@ -51,15 +62,25 @@ export default function TodoDisplay({
       <div className="todoList__items">
         {filteredTodos.map((todo) => (
           <div key={todo.id} className="todoList__item">
-            <p
-              className={
-                todo.done
-                  ? "todoList__text todoList__text--done"
-                  : "todoList__text"
-              }
-            >
-              {todo.text}
-            </p>
+            {editingId === todo.id ? (
+              <input
+                className="todoList__editInput"
+                value={editText}
+                onChange={(e) => setEditText(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && finishEditing(todo.id)}
+                autoFocus
+              />
+            ) : (
+              <p
+                className={
+                  todo.done
+                    ? "todoList__text todoList__text--done"
+                    : "todoList__text"
+                }
+              >
+                {todo.text}
+              </p>
+            )}
 
             <div className="todoList__actions">
               <input
@@ -69,7 +90,11 @@ export default function TodoDisplay({
                 onChange={() => toggleDone(todo.id)}
               />
 
-              <button className="todoList__iconBtn">
+              <button
+                className="todoList__iconBtn"
+                onClick={() => startEditing(todo)}
+                disabled={todo.done}
+              >
                 <img src={penSolid} alt="edit" />
               </button>
 
@@ -88,7 +113,8 @@ export default function TodoDisplay({
         <button className="todoList__clearDone" onClick={deleteDoneTasks}>
           Delete done tasks
         </button>
-        <button className="todoList__clearAll " onClick={deleteAllTasks}>
+
+        <button className="todoList__clearAll" onClick={deleteAllTasks}>
           Delete all tasks
         </button>
       </div>

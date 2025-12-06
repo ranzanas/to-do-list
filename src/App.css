@@ -144,7 +144,12 @@ body {
 .todoList__iconBtn img {
   width: 18px;
 }
-
+input.todoList__editInput {
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+  border: none;
+}
 /* Delete button */
 .todoList__deleteBtn {
   border: none;
