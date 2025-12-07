@@ -8,7 +8,9 @@ export default function TodoInput({ addTodo }) {
   //HANDLE SUBMIT BUTTON
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (text.trim() === "") return alert("Please add todo");
+    if (text.trim() === "")
+    return
+      alert("Please add todo");
     addTodo(text);
     setText("");
   };
