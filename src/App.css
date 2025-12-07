@@ -180,3 +180,19 @@ input.todoList__editInput {
   cursor: pointer;
   width: 50%;
 }
+
+@media screen and (max-width: 992px) {
+  .todoInput,
+  .todoList {
+    min-width: 90%;
+  }
+
+  .todoList__clearDone,
+  .todoList__clearAll {
+    width: 80%;
+  }
+
+  .todoList__bottomBtns {
+    flex-wrap: wrap;
+  }
+}
