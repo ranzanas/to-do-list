@@ -10,6 +10,7 @@
 body {
   font-family: "Open Sans";
 }
+/*add todo css*/
 .todoInput {
   width: 50%;
   margin: 20px auto;
@@ -56,6 +57,7 @@ body {
   border: 1px solid #d4d4d4;
   border-radius: 0 4px 4px 0;
   font-size: 15px;
+  outline-style: none;
 }
 
 .todoInput__btn {
@@ -68,13 +70,15 @@ body {
   font-size: 15px;
   cursor: pointer;
 }
+/*end of add todo css*/
 
+/*CSS for todo CRUD*/
 .todoList {
   width: 50%;
   margin: 30px auto;
 }
 
-/* Filters */
+/* Filters for all, done and todo*/
 .todoList__filters {
   display: flex;
   justify-content: center;
@@ -181,6 +185,7 @@ input.todoList__editInput {
   width: 50%;
 }
 
+/*CSS for responsiveness*/
 @media screen and (max-width: 992px) {
   .todoInput,
   .todoList {
