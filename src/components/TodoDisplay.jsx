@@ -12,24 +12,22 @@ export default function TodoDisplay({
   editTodo,
 }) {
   const [filter, setFilter] = useState("all");
-  const [editingId, setEditingId] = useState(null); // Which todo is being edited
-  const [editText, setEditText] = useState(""); // Text inside edit input
 
-  // FILTER TODOS BASED ON FILTER STATE
+  const [editingId, setEditingId] = useState(null);
+  const [editText, setEditText] = useState("");
+
   const filteredTodos = todos.filter((todo) => {
     if (filter === "done") return todo.done;
     if (filter === "todo") return !todo.done;
     return true;
   });
 
-  // START EDITING A TODO
   const startEditing = (todo) => {
     if (todo.done) return;
     setEditingId(todo.id);
     setEditText(todo.text);
   };
 
-  // FINISH EDITING ON ENTER KEY
   const finishEditing = (id) => {
     if (editText.trim() === "") return;
     editTodo(id, editText.trim());
@@ -40,47 +38,70 @@ export default function TodoDisplay({
     <div className="todoList">
       <h1 className="todoList__title">TodoList</h1>
 
-      {/* FILTER BUTTONS */}
       <div className="todoList__filters">
-        <button onClick={() => setFilter("all")}>All</button>
-        <button onClick={() => setFilter("done")}>Done</button>
-        <button onClick={() => setFilter("todo")}>Todo</button>
+        <button
+          onClick={() => setFilter("all")}
+          className="todoList__filterBtn"
+        >
+          All
+        </button>
+        <button
+          onClick={() => setFilter("done")}
+          className="todoList__filterBtn"
+        >
+          Done
+        </button>
+        <button
+          onClick={() => setFilter("todo")}
+          className="todoList__filterBtn"
+        >
+          Todo
+        </button>
       </div>
 
-      {/* TODO LIST DISPLAY */}
       <div className="todoList__items">
         {filteredTodos.map((todo) => (
           <div key={todo.id} className="todoList__item">
-            {/* If this todo is being edited, show input box */}
             {editingId === todo.id ? (
               <input
+                className="todoList__editInput"
                 value={editText}
                 onChange={(e) => setEditText(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && finishEditing(todo.id)}
                 autoFocus
               />
             ) : (
-              <p className={todo.done ? "todoList__text--done" : ""}>
+              <p
+                className={
+                  todo.done
+                    ? "todoList__text todoList__text--done"
+                    : "todoList__text"
+                }
+              >
                 {todo.text}
               </p>
             )}
 
-            {/* ACTION BUTTONS */}
             <div className="todoList__actions">
-              {/* Checkbox to mark done */}
               <input
                 type="checkbox"
+                className="todoList__checkbox"
                 checked={todo.done}
                 onChange={() => toggleDone(todo.id)}
               />
 
-              {/* Edit button */}
-              <button onClick={() => startEditing(todo)} disabled={todo.done}>
+              <button
+                className="todoList__iconBtn"
+                onClick={() => startEditing(todo)}
+                disabled={todo.done}
+              >
                 <img src={penSolid} alt="edit" />
               </button>
 
-              {/* Delete single task */}
-              <button onClick={() => deleteTodo(todo.id)}>
+              <button
+                className="todoList__deleteBtn"
+                onClick={() => deleteTodo(todo.id)}
+              >
                 <img src={trashSolid} alt="delete" />
               </button>
             </div>
@@ -88,10 +109,14 @@ export default function TodoDisplay({
         ))}
       </div>
 
-      {/* BOTTOM DELETE BUTTONS */}
       <div className="todoList__bottomBtns">
-        <button onClick={deleteDoneTasks}>Delete done tasks</button>
-        <button onClick={deleteAllTasks}>Delete all tasks</button>
+        <button className="todoList__clearDone" onClick={deleteDoneTasks}>
+          Delete done tasks
+        </button>
+
+        <button className="todoList__clearAll" onClick={deleteAllTasks}>
+          Delete all tasks
+        </button>
       </div>
     </div>
   );

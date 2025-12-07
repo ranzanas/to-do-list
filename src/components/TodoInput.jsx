@@ -5,12 +5,11 @@ import { useState } from "react";
 export default function TodoInput({ addTodo }) {
   const [text, setText] = useState("");
 
-  //HANDLE SUBMIT BUTTON
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (text.trim() === "")
-    return
-      alert("Please add todo");
+
+    if (text.trim() === "") return alert("Please add todo");
+
     addTodo(text);
     setText("");
   };
@@ -19,24 +18,22 @@ export default function TodoInput({ addTodo }) {
     <div className="todoInput">
       <h1 className="todoInput__title">TodoInput</h1>
 
-      {/* Form for adding new task */}
       <form className="todoInput__inputMainBox" onSubmit={handleSubmit}>
         <div className="todoInput__inputSection">
           <span className="todoInput__iconBox">
             <img src={bookSolid} alt="icon" className="todoInput__icon" />
           </span>
 
-          {/* Controlled input field */}
           <input
             type="text"
+            className="todoInput__inputBox"
             placeholder="New Todo"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
         </div>
 
-        {/* Submit button */}
-        <button>Add new task</button>
+        <button className="todoInput__btn">Add new task</button>
       </form>
     </div>
   );

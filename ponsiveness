@@ -1,0 +1,13 @@
+[33m23cf6fc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m added comment
+[33m1690431[m added responsiveness
+[33ma7e5266[m edit button functionality
+[33mfe72ab8[m individual delete todo
+[33mc20b784[m delete button functionality
+[33m96d191d[m added functionality for filter button
+[33mb02a02c[m add checkbox functionality
+[33m4f6834a[m add todo functionality and display
+[33mae42829[m todo display ui
+[33mcf958e4[m  functionality to add todo and save in local storage
+[33mbeee7ee[m completed ui development
+[33m4b27d39[m added todo input component
+[33mdee61ff[m first commit
