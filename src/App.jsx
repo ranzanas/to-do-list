@@ -4,7 +4,7 @@ import TodoInput from "./components/TodoInput";
 import TodoDisplay from "./components/TodoDisplay";
 
 function App() {
-  //Todo List (loaded from localStorage on first render
+  //Todo List loaded from localStorage on first render
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
     if (savedTodos) {
@@ -48,7 +48,6 @@ function App() {
     const remaining = todos.filter((todo) => !todo.done);
     setTodos(remaining);
   };
-
   // DELETE ALL TASKS
   const deleteAllTasks = () => {
     const confirmDelete = window.confirm("Delete ALL tasks?");

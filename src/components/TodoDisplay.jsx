@@ -13,20 +13,24 @@ export default function TodoDisplay({
 }) {
   const [filter, setFilter] = useState("all");
 
-  const [editingId, setEditingId] = useState(null);
-  const [editText, setEditText] = useState("");
+  const [editingId, setEditingId] = useState(null); // Which todo is being edited
+  const [editText, setEditText] = useState(""); // Text inside edit input
 
+  //Handles the filtering of the display buttons
   const filteredTodos = todos.filter((todo) => {
     if (filter === "done") return todo.done;
     if (filter === "todo") return !todo.done;
     return true;
   });
 
+  // Start editing todo
   const startEditing = (todo) => {
     if (todo.done) return;
     setEditingId(todo.id);
     setEditText(todo.text);
   };
+
+  // Finish editing todo
 
   const finishEditing = (id) => {
     if (editText.trim() === "") return;
@@ -38,6 +42,7 @@ export default function TodoDisplay({
     <div className="todoList">
       <h1 className="todoList__title">TodoList</h1>
 
+      {/*Filtering buttons*/}
       <div className="todoList__filters">
         <button
           onClick={() => setFilter("all")}
@@ -59,6 +64,7 @@ export default function TodoDisplay({
         </button>
       </div>
 
+      {/*display the todo items*/}
       <div className="todoList__items">
         {filteredTodos.map((todo) => (
           <div key={todo.id} className="todoList__item">
@@ -109,6 +115,7 @@ export default function TodoDisplay({
         ))}
       </div>
 
+      {/* Bottom buttons */}
       <div className="todoList__bottomBtns">
         <button className="todoList__clearDone" onClick={deleteDoneTasks}>
           Delete done tasks

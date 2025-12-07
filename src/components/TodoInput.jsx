@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function TodoInput({ addTodo }) {
   const [text, setText] = useState("");
 
+  //Handles input submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
