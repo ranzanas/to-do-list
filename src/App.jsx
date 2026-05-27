@@ -37,6 +37,7 @@ function App() {
       return todo;
     });
     setTodos(updatedTodos);
+    console.log(setTodos);
   };
 
   // DELETE ONLY COMPLETED TASKS
@@ -65,7 +66,7 @@ function App() {
   const editTodo = (id, newText) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
-        return { ...todo, text: newText }; 
+        return { ...todo, text: newText };
       }
       return todo;
     });
